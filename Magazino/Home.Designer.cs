@@ -83,9 +83,9 @@ namespace Magazino
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Magazino.Properties.Resources.power_button_off;
-            this.pictureBox1.Location = new System.Drawing.Point(304, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(314, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(66, 56);
+            this.pictureBox1.Size = new System.Drawing.Size(56, 40);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
@@ -101,6 +101,7 @@ namespace Magazino
             this.Controls.Add(this.btnCustomersInfo);
             this.Controls.Add(this.btnEditionsInfo);
             this.Controls.Add(this.btnManagersInfo);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

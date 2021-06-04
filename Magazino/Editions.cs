@@ -7,22 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-// UNCOMMENT AFTER CONNECTING TO DB
-
-// using Oracle.DataAccess.Client;
-// using Oracle.DataAccess.Types;
+using Oracle.DataAccess.Client;
+using Oracle.DataAccess.Types;
 
 namespace Magazino
 {
     public partial class Editions : Form
     {
-        // uncomment this after connecting to oracle database
-        // edit the connection string to match the database data
-        // connection string
-        /*
-        string connString = "Data Source=ORCL; User Id=scott;Password=tiger;";
+      
+        string connString = "Data Source=orcl; User Id=hr;Password=hr;";
         OracleConnection conn;
-        */
+        
         public Editions()
         {
             InitializeComponent();
@@ -30,29 +25,35 @@ namespace Magazino
 
         private void Editions_Load(object sender, EventArgs e)
         {
-            // uncomment this after connecting to oracle database
-            // CONNECTING TO THE DATABASE
-            /*
+           
+                      
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
             conn = new OracleConnection(connString);
             conn.Open();
-            */
-            // uncomment this after connecting to oracle database
-            // login validation from database
-
-            /*
-            OracleCommand cmd = new OracleCommand(); 
+            OracleCommand cmd = new OracleCommand();
             cmd.Connection = conn;
-            cmd.CommandText = "SELECT Manager_Id, First_name, Last_name FROM MANAGERS WHERE Email=:email AND Pass=:pass;"; 
-            cmd.CommandType = CommandType.Text;
-            cmd.Parameters.Add("email", email);
-            cmd.Parameters.Add("pass", pass);
-
-            OracleDataReader dr = cmd.ExecuteReader();
-            while(dr.Read())
-            {
-                
-            }
-            */
-}
-}
+            cmd.CommandText = "GetEditionInfo";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("Editionno", textBox1.Text);
+            //cmd.Parameters.Add("title", OracleDbType.Int32, ParameterDirection.Output);
+            cmd.Parameters.Add("numberofsubs", OracleDbType.Int32, ParameterDirection.Output);
+            cmd.Parameters.Add("totalincome", OracleDbType.Int32, ParameterDirection.Output);
+            cmd.ExecuteNonQuery();
+            
+            //textBox2.Text = Convert.ToString(cmd.Parameters["title"].Value.ToString());
+            textBox3.Text = Convert.ToString(cmd.Parameters["numberofsubs"].Value.ToString());
+            textBox4.Text = Convert.ToString(cmd.Parameters["totalincome"].Value.ToString());
+            
+            //conn.Close();
+        }
+    }
 }
