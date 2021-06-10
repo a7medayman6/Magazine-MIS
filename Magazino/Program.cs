@@ -16,7 +16,7 @@ namespace Magazino
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Editions());
+            Application.Run(new Form2());
         }
     }
 }
