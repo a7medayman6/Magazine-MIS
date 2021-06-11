@@ -23,14 +23,26 @@ namespace Magazino
             InitializeComponent();
         }
 
-        private void Editions_Load(object sender, EventArgs e)
-        {
-           
-                      
-        }
+          private void Editions_Load(object sender, EventArgs e)
+          {
+               conn = new OracleConnection(connString);
+               conn.Open();
+               OracleCommand cmd = new OracleCommand();
+               cmd.Connection = conn;
+               cmd.CommandText = "select profit_per_edition_id from profit";
 
+               OracleDataReader dr = cmd.ExecuteReader();
+               while (dr.Read())
+               {
+                    cmb_edition.Items.Add(dr[0].ToString());
+
+               }
+               dr.Close();
+               conn.Close();
+          }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+                    
             Application.Exit();
         }
 
@@ -43,17 +55,18 @@ namespace Magazino
             cmd.Connection = conn;
             cmd.CommandText = "GetEditionInfo";
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("Editionno", textBox1.Text);
+            cmd.Parameters.Add("Editionno", cmb_edition.SelectedItem.ToString());
             //cmd.Parameters.Add("title", OracleDbType.Int32, ParameterDirection.Output);
-            cmd.Parameters.Add("numberofsubs", OracleDbType.Int32, ParameterDirection.Output);
-            cmd.Parameters.Add("totalincome", OracleDbType.Int32, ParameterDirection.Output);
+            cmd.Parameters.Add("noofsubs", OracleDbType.Int32, ParameterDirection.Output);
+            cmd.Parameters.Add("Total", OracleDbType.Int32, ParameterDirection.Output);
+               
             cmd.ExecuteNonQuery();
             
             //textBox2.Text = Convert.ToString(cmd.Parameters["title"].Value.ToString());
-            textBox3.Text = Convert.ToString(cmd.Parameters["numberofsubs"].Value.ToString());
-            textBox4.Text = Convert.ToString(cmd.Parameters["totalincome"].Value.ToString());
+            textBox3.Text = Convert.ToString(cmd.Parameters["noofsubs"].Value.ToString());
+            textBox4.Text = Convert.ToString(cmd.Parameters["Total"].Value.ToString());
             
-            //conn.Close();
+            conn.Close();
         }
     }
 }

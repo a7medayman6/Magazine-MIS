@@ -33,5 +33,23 @@ namespace Magazino
             new Editions().Show();
             this.Hide();
         }
-    }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+               new Report_Profit().Show();
+               this.Hide();
+          }
+
+          private void btn_subReport_Click(object sender, EventArgs e)
+          {
+               new Form3().Show();
+               this.Hide();
+          }
+
+          private void btnCustomersInfo_Click(object sender, EventArgs e)
+          {
+               new Form2().Show();
+               this.Hide();
+          }
+     }
 }

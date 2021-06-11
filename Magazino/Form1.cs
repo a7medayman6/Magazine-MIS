@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,8 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 // UNCOMMENT AFTER CONNECTING TO DB
 
-// using Oracle.DataAccess.Client;
-// using Oracle.DataAccess.Types;
+using Oracle.DataAccess.Client;
+using Oracle.DataAccess.Types;
 
 namespace Magazino
 {
@@ -19,10 +20,10 @@ namespace Magazino
         // uncomment this after connecting to oracle database
         // edit the connection string to match the database data
         // connection string
-        /*
-        string connString = "Data Source=ORCL; User Id=scott;Password=tiger;";
+        
+        string connString = "Data Source=ORCL;User Id=hr;Password=hr;";
         OracleConnection conn;
-        */
+       
         public Form1()
         {
             InitializeComponent();
@@ -32,17 +33,17 @@ namespace Magazino
         {
             // uncomment this after connecting to oracle database
             // CONNECTING TO THE DATABASE
-            /*
+            
             conn = new OracleConnection(connString);
             conn.Open();
-            */
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             string email = txtUserName.Text.ToString().Trim();
             string pass = txtPassword.Text.ToString().Trim();
-
+               
             if(email == "" || pass == "")
             {
                 MessageBox.Show("Email and Password cannot be empty.");
@@ -54,14 +55,15 @@ namespace Magazino
                 // uncomment this after connecting to oracle database
                 // login validation from database
 
-                /*
+               
+                Console.WriteLine(email + "\t" + pass);
                 OracleCommand cmd = new OracleCommand(); 
                 cmd.Connection = conn;
-                cmd.CommandText = "SELECT Manager_Id, First_name, Last_name FROM MANAGERS WHERE Email=:email AND Pass=:pass;"; 
+                cmd.CommandText = "SELECT * from managers where email=:email AND pass=:pass"; 
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.Add("email", email);
                 cmd.Parameters.Add("pass", pass);
-
+                
                 OracleDataReader dr = cmd.ExecuteReader();
                 if(dr.Read())
                 {
@@ -77,10 +79,11 @@ namespace Magazino
                 }
                 dr.Close();
 
-                */
+              
 
                 // COMMENT THE NEXT BLOCK OF CODE AFTER CONNECTING TO THE DATABASE
-                {
+                /*
+                    {
                     if (txtUserName.Text == "admin" && txtPassword.Text == "admin")
                     {
                         new Home().Show();
@@ -93,6 +96,7 @@ namespace Magazino
                         txtUserName.Focus();
                     }
                 }
+                */
             }
         }
 
@@ -115,5 +119,10 @@ namespace Magazino
         {
 
         }
-    }
+
+          private void label1_Click(object sender, EventArgs e)
+          {
+
+          }
+     }
 }
