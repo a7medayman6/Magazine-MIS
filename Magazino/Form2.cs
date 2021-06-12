@@ -27,7 +27,7 @@ namespace Magazino
             con.Open();
             OracleCommand cmd = new OracleCommand();
             cmd.Connection = con;
-            cmd.CommandText = "GETCUSTOMERSID";
+            cmd.CommandText = "GETCUSTOMERSIDS";
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("Id", OracleDbType.RefCursor, ParameterDirection.Output);
 
@@ -70,5 +70,19 @@ namespace Magazino
         {
 
         }
+      
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+            Home hm = new Home();
+            hm.Show();
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+    
     }
 }

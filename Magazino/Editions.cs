@@ -68,5 +68,28 @@ namespace Magazino
             
             conn.Close();
         }
+
+        private void cmb_edition_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Home hm = new Home();
+            hm.Show();
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

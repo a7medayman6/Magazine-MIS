@@ -47,5 +47,12 @@ namespace Magazino
           {
                Application.Exit();
           }
-     }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Home hm = new Home();
+            hm.Show();
+        }
+    }
 }

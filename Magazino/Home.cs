@@ -51,5 +51,10 @@ namespace Magazino
                new Form2().Show();
                this.Hide();
           }
-     }
+
+        private void Home_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

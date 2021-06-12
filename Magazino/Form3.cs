@@ -28,9 +28,16 @@ namespace Magazino
                CR_Subs = new CrystalReport2();
           }
 
-          private void pictureBox1_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
           {
                Application.Exit();
           }
-     }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+            Home hm = new Home();
+            hm.Show();
+        }
+    }
 }
